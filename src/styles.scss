@@ -1,1 +1,90 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+/*-----------------------------------------------------------
+    bootstrap
+----------------------------------------------------------*/
+
+$icon-font-path: "assets/bootstrap-sass-3.3.7/fonts/bootstrap/";
+@import "assets/bootstrap-sass-3.3.7/stylesheets/bootstrap";
+
+/*-----------------------------------------------------------
+    font-awesome
+----------------------------------------------------------*/
+
+@import "assets/font-awesome-4.7.0/css/font-awesome.min.css";
+
+/*-----------------------------------------------------------
+    materialdesignicons
+----------------------------------------------------------*/
+
+@import "assets/materialdesignicons-1.9.32/css/materialdesignicons.min.css";
+
+/*-----------------------------------------------------------
+    pretty-checkbox
+----------------------------------------------------------*/
+
+@import "assets/pretty-checkbox-2.2.1/pretty.scss";
+
+/*-----------------------------------------------------------
+    preloader
+----------------------------------------------------------*/
+
+@import "assets/scss/preloader";
+
+/*-----------------------------------------------------------
+    全局样式写在这里
+----------------------------------------------------------*/
+
+body {
+    font-family: "Arimo", Helvetica, Arial, sans-serif;
+    color: #333;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    overflow-x: hidden;
+    background-color: #f5f5f5;
+}
+
+
+/*滚动条样式*/
+
+::-webkit-scrollbar {
+    width: 10px!important;
+    height: 10px!important;
+    -webkit-appearance: none;
+}
+
+::-webkit-scrollbar-thumb {
+    height: 5px;
+    border: 1px solid transparent;
+    border-top: none;
+    border-bottom: none;
+    -webkit-border-radius: 6px;
+    background-color: rgba(0, 0, 0, .3);
+    background-clip: padding-box;
+}
+
+@for $size from 0 through 30 {
+    @each $position in top,
+    left,
+    right,
+    bottom {
+        .margin-#{$position}-#{$size} {
+            margin-#{$position}: 1px * $size !important;
+        }
+        .padding-#{$position}-#{$size} {
+            padding-#{$position}: 1px * $size !important;
+        }
+    }
+    .margin-#{$size} {
+        margin: 1px * $size !important;
+    }
+    .padding-#{$size} {
+        padding: 1px * $size !important;
+    }
+}
+
+.page-content {
+    padding: 15px;
+}

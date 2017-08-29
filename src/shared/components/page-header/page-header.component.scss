@@ -1,0 +1,86 @@
+.page-header {
+    background-color: #26a9e1;
+    position: fixed;
+    z-index: 904;
+    // box-shadow: 2px 0 3px rgba(0, 0, 0, 0.5);
+    height: 56px;
+    width: 100%;
+    min-width: 750px;
+    margin: 0;
+    border: 0;
+    padding: 0 16px 0 0;
+}
+
+.navbar-brand {
+    display: inline-block;
+    width: 200px;
+    height: 56px;
+    padding: 13px 0 0 0;
+    background-color: #1997d4;
+}
+
+.navbar-right {
+    float: right !important;
+    margin-right: -15px;
+}
+
+.page-header .nav>li {
+    position: relative;
+    display: block;
+    height: 56px;
+    line-height: 26px;
+    float: left;
+}
+
+.page-header .navbar-nav {
+    margin: 0;
+}
+
+.page-header .navbar-nav>li {
+    outline: none;
+}
+
+.page-header .navbar-nav>li>a {
+    display: block;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    height: 56px;
+    line-height: 26px;
+    color: #ffffff;
+    &:hover {
+        color: #ffffff;
+        background-color: rgba(255, 255, 255, 0.4);
+        cursor: pointer;
+    }
+    &:focus {
+        color: #ffffff;
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+}
+
+.navbar-nav>li:hover .dropdown-menu {
+    display: block;
+}
+
+.page-header .navbar-nav>li.active {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.page-header li.profile {
+    opacity: 1 !important;
+}
+
+.page-header li.profile>a {
+    line-height: 56px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.page-header li.profile img {
+    height: 35px;
+    width: 35px;
+    top: -1px;
+    right: 10px;
+    position: relative;
+    background-color: #999999;
+}

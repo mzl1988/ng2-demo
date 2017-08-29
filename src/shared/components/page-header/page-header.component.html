@@ -1,0 +1,29 @@
+<div class="page-header">
+    <a class="navbar-brand">
+        <img width="200" height="30" src="assets/images/angularjs-for-header-only.svg" alt="AngularJS">
+    </a>
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a>
+                <i class="fa fa-envelope"></i>
+            </a>
+        </li>
+
+
+        <li class="profile">
+            <a>
+                <img src="./assets/images/profile.jpg" alt="user-image" class="img-circle img-inline">
+                <span>
+                    Shane Taylor
+                    <i class="fa fa-angle-down"></i>
+                </span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li><a><i class="fa fa-question-circle"></i> 用户手册</a></li>
+                <li><a><i class="fa fa-info-circle"></i> 关于</a></li>
+                <li class="divider"></li>
+                <li><a (click)="logout()"><i class="fa fa-lock"></i> 登出</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
