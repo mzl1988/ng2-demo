@@ -1,9 +1,13 @@
 # ng2-demo
 
 ## 升级
-1. npm uninstall -g @angular/cli
-2. npm cache clean
-3. cnpm install -g @angular/cli@latest
+* npm uninstall -g @angular/cli
+* npm cache clean
+* npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/ 
+* npm install -g @angular/cli@latest --loglevel warn --unsafe-perm=true
+* rm -rf node_modules dist
+* npm install --save-dev @angular/cli@latest
+* npm install
 
 ## 开发
 1. cnpm install -g @angular/cli@latest
