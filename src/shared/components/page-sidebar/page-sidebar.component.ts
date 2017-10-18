@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router, ActivatedRouteSnapshot, RouterState, RouterStateSnapshot } from '@angular/router';
 import * as _ from 'lodash';
 declare let $: any;
@@ -8,7 +8,7 @@ declare let $: any;
     templateUrl: './page-sidebar.component.html',
     styleUrls: ['./page-sidebar.component.scss']
 })
-export class PageSidebarComponent implements OnInit {
+export class PageSidebarComponent implements OnInit, AfterViewInit {
     perfectScrollbarConfig: any = {
         suppressScrollX: true,
         suppressScrollY: false
@@ -16,20 +16,29 @@ export class PageSidebarComponent implements OnInit {
 
     menuList: Array<any> = [
         {
-            name: '仪表板',
-            icon: 'fa fa-dashboard',
-            route: '/pages/profile'
+            name: '首页',
+            icon: 'mdi mdi-home',
+            route: '/pages/home'
         },
         {
-            name: '物流',
-            icon: 'fa fa-dashboard',
+            name: '权限管理',
+            icon: 'mdi mdi-security',
             on: false,
             children: [
                 {
-                    name: '运费模版',
-                    route: '/pages/profile'
+                    name: '部门',
+                    route: '/pages/authority/department'
+                },
+                {
+                    name: '角色',
+                    route: '/pages/authority/role'
+                },
+                {
+                    name: '管理员',
+                    route: '/pages/authority/admin'
                 }
             ]
+
         }
     ];
 
@@ -37,11 +46,29 @@ export class PageSidebarComponent implements OnInit {
         public router: Router,
         public activatedRoute: ActivatedRoute
     ) {
+
+    }
+
+    onResize(event) {
+        $('.page-sidebar').slimScroll({
+            width: '220px',
+            height: `${event.target.innerHeight - 60}px`
+        });
     }
 
     ngOnInit() {
+
+    }
+
+    ngAfterViewInit() {
+        $('.page-sidebar').slimScroll({
+            width: '220px',
+            height: `${window.innerHeight - 60}px`
+        });
         $.sidebarMenu($('.sidebar-menu'));
-        this.selectedMenu();
+        setTimeout(() => {
+            this.selectedMenu();
+        });
     }
 
     selectedMenu() {

@@ -1,0 +1,64 @@
+ng-select>div {
+    min-height: 34px;
+}
+
+ng-select .open {
+    border-color: #3292E0 !important;
+}
+
+ng-select>div>div.single>div.placeholder {
+    color: #999 !important;
+}
+
+ng-select>div>div.single {
+    height: 32px !important;
+}
+
+ng-select>div {
+    outline: none;
+    border: 1px solid #dde6e9 !important;
+}
+
+select-dropdown>div .filter input {
+    outline: none;
+    height: 30px;
+    line-height: 30px;
+}
+
+ng-select>div>div.single>div.toggle {
+    font-size: 1px !important;
+}
+
+select-dropdown .highlighted {
+    background-color: #3292E0 !important;
+}
+
+select-dropdown .disabled {
+    background-color: #ffffff !important;
+}
+
+ng-select>div>div.single>div.value {
+    color: #555;
+}
+
+ng-select>div>div.single>div.value,
+ng-select>div>div.single>div.placeholder {
+    line-height: 32px !important;
+}
+
+ng-select>div>div.single>div.clear,
+ng-select>div>div.single>div.toggle {
+    line-height: 32px !important;
+}
+
+ng-select>div>div.single>div.clear {
+    font-size: 14px !important;
+}
+
+select-dropdown>div {
+    z-index: 3 !important;
+}
+
+ng-select>div>div.multiple input {
+    width: 100% !important;
+}

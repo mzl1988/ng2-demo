@@ -1,0 +1,212 @@
+<div class="page-content">
+    <div class="row page-titles">
+        <div class="col-md-12 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">权限管理</li>
+                <li class="breadcrumb-item active">管理员</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-6 margin-top-8"><i class="fa fa-list-ul"></i> 数据列表</div>
+                <div class="col-xs-6 text-right">
+                    <button type="button" class="btn btn-default" (click)="openModal(template)">添加</button>
+                </div>
+            </div>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>登录帐号</th>
+                    <th>所属部门</th>
+                    <th>角色类型</th>
+                    <th class="padding-left-20">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>010201</td>
+                    <td>珠海市公安局</td>
+                    <td>一级管理员</td>
+                    <td>
+                        <a routerLink="/pages/authority/admin/1/permissions" class="btn btn-link">修改权限</a>
+                        <button type="button" class="btn btn-link" (click)="openPasswordModal(passwordTemplate)">修改密码</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>010203</td>
+                    <td>香洲分局</td>
+                    <td>一级管理员</td>
+                    <td>
+                        <a routerLink="/pages/authority/admin/2/permissions" class="btn btn-link">修改权限</a>
+                        <button type="button" class="btn btn-link" (click)="openPasswordModal(passwordTemplate)">修改密码</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>010205</td>
+                    <td>柠溪派出所</td>
+                    <td>二级管理员</td>
+                    <td>
+                        <a routerLink="/pages/authority/admin/3/permissions" class="btn btn-link">修改权限</a>
+                        <button type="button" class="btn btn-link" (click)="openPasswordModal(passwordTemplate)">修改密码</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="panel-footer has-pagination">
+            <app-pagination-component [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [currentPage]="currentPage" [maxSize]="maxSize"
+                (changeEvent)="pageChanged($event)"></app-pagination-component>
+        </div>
+    </div>
+</div>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">添加管理员</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="addModalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal" [formGroup]="addForm" novalidate (ngSubmit)="toAdd(addForm.value)">
+            <div class="form-group">
+                <label for="username" class="col-sm-3 control-label">用户名：</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="用户名" id="username" formControlName="username" maxlength="16" required>
+                    <div *ngIf="addForm.controls.username.invalid && (addForm.controls.username.dirty || addForm.controls.username.touched)"
+                        class="text-danger">
+                        <div *ngIf="addForm.controls.username.errors.required">
+                            用户名不能为空
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-3 control-label">设置密码：</label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control" placeholder="密码" id="password" formControlName="password" maxlength="16" required>
+                    <div *ngIf="addForm.controls.password.invalid && (addForm.controls.password.dirty || addForm.controls.password.touched)"
+                        class="text-danger">
+                        <div *ngIf="addForm.controls.password.errors.required">
+                            密码不能为空
+                        </div>
+                        <div *ngIf="addForm.controls.password.errors.minlength">
+                            密码最小长度为1个字节
+                        </div>
+                        <div *ngIf="addForm.controls.password.errors.maxlength">
+                            密码最大长度为16个字节
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword" class="col-sm-3 control-label">确认密码：</label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control" placeholder="确认密码" id="confirmPassword" formControlName="confirmPassword" maxlength="16"
+                        required [class.has-error]="addForm.controls.confirmPassword.valid && (addForm.controls.confirmPassword.value !== addForm.controls.password.value)">
+                    <div *ngIf="addForm.controls.confirmPassword.invalid && (addForm.controls.confirmPassword.dirty || addForm.controls.confirmPassword.touched)"
+                        class="text-danger">
+                        <div *ngIf="addForm.controls.confirmPassword.errors.required">
+                            确认密码不能为空
+                        </div>
+                    </div>
+                    <div class="text-danger" *ngIf="addForm.controls.confirmPassword.valid && (addForm.controls.confirmPassword.value !== addForm.controls.password.value)">
+                        两次密码不一致
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="departmentId" class="col-sm-3 control-label">选择部门：</label>
+                <div class="col-sm-8">
+                    <select id="departmentId" class="form-control" formControlName="departmentId" required>
+                        <option value="0">0</option>
+                        <option value="1">2</option>
+                    </select>
+                    <div *ngIf="addForm.controls.departmentId.invalid && addForm.controls.departmentId.touched" class="text-danger">
+                        <div *ngIf="addForm.controls.departmentId.errors.required">请选择部门</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="roleId" class="col-sm-3 control-label">选择角色：</label>
+                <div class="col-sm-8">
+                    <select id="roleId" class="form-control" formControlName="roleId" required>
+                            <option value="0">0</option>
+                            <option value="1">2</option>
+                        </select>
+                    <div *ngIf="addForm.controls.roleId.invalid && addForm.controls.roleId.touched" class="text-danger">
+                        <div *ngIf="addForm.controls.roleId.errors.required">请选择角色</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group text-center margin-top-30">
+                <button type="button" class="btn btn-default" (click)="addModalRef.hide()">取消</button>
+                <button type="submit" class="btn btn-success" [disabled]="addForm.invalid || (addForm.controls.confirmPassword.value !== addForm.controls.password.value)">保存</button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+
+<ng-template #passwordTemplate>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">修改密码</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="passwordModalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal" [formGroup]="passwordForm" novalidate (ngSubmit)="toEditPwd(passwordForm.value)">
+            <div class="form-group">
+                <label for="username" class="col-sm-3 control-label">用户名：</label>
+                <div class="col-sm-8">
+                    <p class="form-control-static">用户名</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-3 control-label">新密码：</label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control" placeholder="新密码" id="password" formControlName="password" maxlength="16" required>
+                    <div *ngIf="passwordForm.controls.password.invalid && (passwordForm.controls.password.dirty || passwordForm.controls.password.touched)"
+                        class="text-danger">
+                        <div *ngIf="passwordForm.controls.password.errors.required">
+                            新密码不能为空
+                        </div>
+                        <div *ngIf="passwordForm.controls.password.errors.minlength">
+                            新密码最小长度为1个字节
+                        </div>
+                        <div *ngIf="passwordForm.controls.password.errors.maxlength">
+                            新密码最大长度为16个字节
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword" class="col-sm-3 control-label">确认新密码：</label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control" placeholder="确认新密码" id="confirmPassword" formControlName="confirmPassword" maxlength="16"
+                        required [class.has-error]="passwordForm.controls.confirmPassword.valid && (passwordForm.controls.confirmPassword.value !== passwordForm.controls.password.value)">
+                    <div *ngIf="passwordForm.controls.confirmPassword.invalid && (passwordForm.controls.confirmPassword.dirty || passwordForm.controls.confirmPassword.touched)"
+                        class="text-danger">
+                        <div *ngIf="passwordForm.controls.confirmPassword.errors.required">
+                            确认新密码不能为空
+                        </div>
+                    </div>
+                    <div class="text-danger" *ngIf="passwordForm.controls.confirmPassword.valid && (passwordForm.controls.confirmPassword.value !== passwordForm.controls.password.value)">
+                        两次密码不一致
+                    </div>
+                </div>
+            </div>
+            <div class="form-group text-center margin-top-30">
+                <button type="button" class="btn btn-default" (click)="passwordModalRef.hide()">取消</button>
+                <button type="submit" class="btn btn-success" [disabled]="passwordForm.invalid || (passwordForm.controls.confirmPassword.value !== passwordForm.controls.password.value)">保存</button>
+            </div>
+        </form>
+    </div>
+</ng-template>

@@ -1,4 +1,4 @@
-# ng2-demo
+# PC
 
 ## 升级
 * npm uninstall -g @angular/cli
@@ -10,9 +10,9 @@
 * npm install
 
 ## 开发
-1. cnpm install -g @angular/cli@latest
-2. $ cnpm install
-3. $ ng serve 或 ng serve --host 192.168.10.105 --port 4201
+* npm install
+* cp src/config/_config.ts src/config/config.ts
+* ng serve 或 ng serve --host 192.168.10.113 --port 4208
 
 打开你的浏览器，访问http://localhost:XXXX/ 或 http://192.168.10.xxx:xxxx
 
@@ -43,19 +43,29 @@ angular-cli会在项目根目录下生成一个dist目录，里面就是编译�
 
 ## UI组件
 * ngx-bootstrap http://valor-software.com/ngx-bootstrap/#/
-* moment http://momentjs.cn/docs/
+* moment http://momentjs.com/
 * lodash http://lodashjs.com/docs/
 * checkbox https://lokesh-coder.github.io/pretty-checkbox/
-* bootstrap http://getbootstrap.com/components/
-* ngx-perfect-scrollbar https://github.com/zefoy/ngx-perfect-scrollbar
-* layer https://github.com/sentsin/layer
+* bootstrap http://getbootstrap.com/components
 * echarts http://echarts.baidu.com/
-* ngx-echarts https://github.com/xieziyu/ngx-echarts
-* bootstrap-datepicker https://github.com/uxsolutions/bootstrap-datepicker
 * bootstrap-daterangepicker http://www.daterangepicker.com/
 * ng-select https://basvandenberg.github.io/ng-select
 * ngx-pipes https://github.com/danrevah/ngx-pipes
+* ngx-toastr https://github.com/scttcper/ngx-toastr
+* jquery-slimscroll http://rocha.la/jQuery-slimScroll
+* jquery-confirm http://craftpip.github.io/jquery-confirm/
+* crypto-js https://github.com/brix/crypto-js
+* store https://github.com/marcuswestin/store.js
+* ng2-pdf-viewer https://github.com/VadimDez/ng2-pdf-viewer
+* jsmind https://github.com/hizzgdev/jsmind
+* bootstrap-contextmenu https://github.com/sydcanem/bootstrap-contextmenu
 
 ## 图标
-1. http://fontawesome.io/icons/ 常用
-3. https://materialdesignicons.com/ 常用
+* http://fontawesome.io/icons/ 常用
+* https://materialdesignicons.com/ 常用
+
+## 常用Charts
+* echarts http://echarts.baidu.com/
+* peity http://benpickles.github.io/peity/
+* easy-pie-chart http://rendro.github.io/easy-pie-chart/
+* sparkline https://omnipotent.net/jquery.sparkline/#s-about

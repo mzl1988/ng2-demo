@@ -1,0 +1,23 @@
+.input-group {
+    width: 120px;
+    float: right;
+    margin-left: 15px;
+
+    .input-group-addon {
+        background: transparent;
+        border: 0;
+    }
+
+    .form-control {
+        text-align: center;
+        border-radius: 4px;
+    }
+}
+
+.total-page {
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    float: right;
+    text-align: center;
+}

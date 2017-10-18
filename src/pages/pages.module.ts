@@ -21,6 +21,6 @@ import { pagesRoutes } from './pages.routes';
     ],
     providers: [
         AuthGuard
-    ],
+    ]
 })
 export class PagesModule { }

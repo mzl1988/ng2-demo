@@ -1,9 +1,8 @@
 .page-header {
-    background-color: #26a9e1;
+    background-color: #3292E0;
     position: fixed;
     z-index: 904;
-    // box-shadow: 2px 0 3px rgba(0, 0, 0, 0.5);
-    height: 56px;
+    height: 60px;
     width: 100%;
     min-width: 750px;
     margin: 0;
@@ -12,11 +11,20 @@
 }
 
 .navbar-brand {
-    display: inline-block;
-    width: 200px;
-    height: 56px;
-    padding: 13px 0 0 0;
-    background-color: #1997d4;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    height: 60px;
+    font-size: 25px;
+    padding: 0 15px;
+    color: #ffffff;
+}
+
+.logo {
+    display: block;
+    width: 45px;
+    height: 45px;
+    margin-right: 10px;
 }
 
 .navbar-right {
@@ -27,7 +35,7 @@
 .page-header .nav>li {
     position: relative;
     display: block;
-    height: 56px;
+    height: 60px;
     line-height: 26px;
     float: left;
 }
@@ -44,8 +52,8 @@
     display: block;
     padding-top: 15px;
     padding-bottom: 15px;
-    height: 56px;
-    line-height: 26px;
+    height: 60px;
+    line-height: 30px;
     color: #ffffff;
     &:hover {
         color: #ffffff;
@@ -71,7 +79,7 @@
 }
 
 .page-header li.profile>a {
-    line-height: 56px !important;
+    line-height: 60px !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
 }
@@ -82,5 +90,10 @@
     top: -1px;
     right: 10px;
     position: relative;
-    background-color: #999999;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.profile > .dropdown-menu {
+    width: 100%;
 }

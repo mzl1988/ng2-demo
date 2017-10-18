@@ -2,21 +2,18 @@ import { RouterModule } from '@angular/router';
 import { PagesComponent } from './pages.component';
 
 export const pagesRoutes = [
-    // {
-    //     path: 'login',
-    //     loadChildren: 'pages/login/login.module#LoginModule'
-    // },
-    // {
-    //     path: 'register',
-    //     loadChildren: 'app/pages/register/register.module#RegisterModule'
-    // },
+    {
+        path: 'login',
+        loadChildren: 'pages/login/login.module#LoginModule'
+    },
     {
         path: 'pages',
         component: PagesComponent,
         children: [
-            { path: '', redirectTo: 'profile', pathMatch: 'full' },
-            { path: 'profile', loadChildren: 'pages/profile/profile.module#ProfileModule' },
-            { path: '**', redirectTo: 'profile' }
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
+            { path: 'home', loadChildren: 'pages/home/home.module#HomeModule' },
+            { path: 'authority', loadChildren: 'pages/authority/authority.module#AuthorityModule' },
+            { path: '**', redirectTo: 'home' }
         ]
     }
 ];

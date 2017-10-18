@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="input-group input-group-sm" *ngIf="hasToPageBox">
+            <span class="input-group-addon">跳至</span>
+            <input type="text" class="form-control" [(ngModel)]="searchText" (keyup)="searchChanged($event)" (change)="searchChanged($event)" id="searchText" name="searchText">
+            <span class="input-group-addon">页</span>
+        </div>
+        <pagination class="pagination-sm pull-right" previousText='<i class="fa fa-angle-left"></i>' nextText='<i class="fa fa-angle-right"></i>' firstText='<i class="fa fa-angle-double-left"></i>' lastText='<i class="fa fa-angle-double-right"></i>' [totalItems]="totalItems"
+            [itemsPerPage]="itemsPerPage" [(ngModel)]="currentPage" [maxSize]="maxSize" [boundaryLinks]="true" [rotate]="false"
+            (numPages)="numPages = $event" (pageChanged)="pageChanged($event)"></pagination>
+        <div class="total-page" *ngIf="hasPageBox">共 {{totalPage}} 页</div>
+    </div>
+</div>

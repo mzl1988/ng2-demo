@@ -1,0 +1,102 @@
+<div class="page-content">
+    <div class="row page-titles">
+        <div class="col-md-12 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">权限管理</li>
+                <li class="breadcrumb-item active">角色</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-6 margin-top-8"><i class="fa fa-list-ul"></i> 数据列表</div>
+                <div class="col-xs-6 text-right">
+                    <button type="button" class="btn btn-default" (click)="openModal(template)">添加</button>
+                </div>
+            </div>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>角色类型</th>
+                    <th>备注</th>
+                    <th>默认角色</th>
+                    <th class="padding-left-20">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>一级管理员</td>
+                    <td>市局管理员</td>
+                    <td>是</td>
+                    <td>
+                        <a routerLink="/pages/authority/role/1/permissions" class="btn btn-link">修改权限</a>
+                        <button type="button" class="btn btn-link text-danger" (click)="toDelete()">删除</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>二级管理员</td>
+                    <td>分局、支队、处管理员</td>
+                    <td>是</td>
+                    <td>
+                        <a routerLink="/pages/authority/role/1/permissions" class="btn btn-link">修改权限</a>
+                        <button type="button" class="btn btn-link text-danger" (click)="toDelete()">删除</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>三级管理员</td>
+                    <td>科所队管理员</td>
+                    <td>是</td>
+                    <td>
+                        <a routerLink="/pages/authority/role/1/permissions" class="btn btn-link">修改权限</a>
+                        <button type="button" class="btn btn-link text-danger" (click)="toDelete()">删除</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="panel-footer has-pagination">
+            <app-pagination-component [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [currentPage]="currentPage" [maxSize]="maxSize"
+                (changeEvent)="pageChanged($event)"></app-pagination-component>
+        </div>
+    </div>
+</div>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">添加角色</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="addModalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal" [formGroup]="addForm" novalidate (ngSubmit)="toAdd(addForm.value)">
+            <div class="form-group">
+                <label for="name" class="col-sm-3 control-label">名称：</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="名称" id="name" formControlName="name" maxlength="16" required>
+                    <div *ngIf="addForm.controls.name.invalid && (addForm.controls.name.dirty || addForm.controls.name.touched)" class="text-danger">
+                        <div *ngIf="addForm.controls.name.errors.required">
+                            名称不能为空
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="remark" class="col-sm-3 control-label">备注：</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="备注" id="remark" formControlName="remark" maxlength="50">
+                </div>
+            </div>
+            <div class="form-group text-center margin-top-30">
+                <button type="button" class="btn btn-default" (click)="addModalRef.hide()">取消</button>
+                <button type="submit" class="btn btn-success" [disabled]="addForm.invalid">保存</button>
+            </div>
+        </form>
+    </div>
+</ng-template>

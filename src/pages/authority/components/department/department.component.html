@@ -1,0 +1,42 @@
+<div class="page-content">
+    <div class="row page-titles">
+        <div class="col-md-12 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">权限管理</li>
+                <li class="breadcrumb-item active">部门</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-list-ul"></i> 数据列表
+        </div>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center">部门名称</th>
+                    <th class="text-center">部门代码</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-template #recursiveList let-list>
+                    <ng-template ngFor let-item [ngForOf]="list">
+                        <tr>
+                            <td [ngStyle]="{'padding-left': item.level * 20 + 'px'}">
+                                <span class="icon" *ngIf="item.children.length > 0" (click)="item.open = !item.open">
+                                    <i class="fa" [ngClass]="{'fa-minus': item.open, 'fa-plus': !item.open}"></i>
+                                </span> {{item.name}}
+                            </td>
+                            <td class="text-center">{{item.code}}</td>
+                        </tr>
+                        <ng-container *ngIf="item.children.length > 0 && item.open">
+                            <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.children }"></ng-container>
+                        </ng-container>
+                    </ng-template>
+                </ng-template>
+                <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: list }"></ng-container>
+            </tbody>
+        </table>
+    </div>
+</div>

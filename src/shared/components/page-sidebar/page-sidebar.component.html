@@ -1,17 +1,17 @@
-<div class="page-sidebar">
+<div class="page-sidebar noselect" (window:resize)="onResize($event)">
     <ul class="sidebar-menu">
-        <li class="sidebar-header">
-            <!-- 功能菜单 -->
-        </li>
+        <!-- <li class="sidebar-header">
+            功能菜单
+        </li> -->
         <li *ngFor="let menuItem of menuList" [ngClass]="{'active': menuItem.on}">
             <a *ngIf="!menuItem.children" [routerLink]="menuItem.route" routerLinkActive="on" >
                 <i class="{{ menuItem.icon }}"></i> <span>{{ menuItem.name }}</span>
             </a>
             <a *ngIf="menuItem.children">
-                <i class="{{ menuItem.icon }}"></i> <span>{{ menuItem.name }}</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="{{ menuItem.icon }}"></i> <span>{{ menuItem.name }}</span> <i class="fa fa-angle-left pull-right" style="color: #6C7177"></i>
             </a>
             <ul class="sidebar-submenu" *ngIf="menuItem.children">
-                <li *ngFor="let subItem of menuItem.children"><a [routerLink]="subItem.route">{{ subItem.name }}</a></li>
+                <li *ngFor="let subItem of menuItem.children"><a [routerLink]="subItem.route" routerLinkActive="on">{{ subItem.name }}</a></li>
             </ul>
         </li>
         <!-- <li>

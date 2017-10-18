@@ -1,7 +1,7 @@
 {
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "project": {
-        "name": "ng2-demo"
+        "name": "pc"
     },
     "apps": [{
         "root": "src",
@@ -18,12 +18,21 @@
         "testTsconfig": "tsconfig.spec.json",
         "prefix": "app",
         "styles": [
-            "styles.scss"
+            "styles.scss",
+            "../node_modules/bootstrap-daterangepicker/daterangepicker.css"            
         ],
         "scripts": [
             "../node_modules/jquery/dist/jquery.min.js",
             "../src/assets/js/sidebar-menu.js",
-            "../node_modules/moment/min/moment-with-locales.min.js"
+            "../node_modules/moment/min/moment-with-locales.min.js",
+            "../node_modules/jquery-slimscroll/jquery.slimscroll.min.js",
+            "../node_modules/store/dist/store.legacy.min.js",
+            "../node_modules/jquery-confirm/dist/jquery-confirm.min.js",
+            "../node_modules/echarts/dist/echarts.min.js",
+            "../src/assets/jsmind/js/jsmind.js",
+            "../src/assets/jsmind/js/jsmind.draggable.js",
+            "../node_modules/bootstrap-daterangepicker/daterangepicker.js",
+            "../node_modules/bootstrap-contextmenu/bootstrap-contextmenu.js"
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {
@@ -37,16 +46,13 @@
         }
     },
     "lint": [{
-            "project": "src/tsconfig.app.json",
-            "exclude": "**/node_modules/**"
+            "project": "src/tsconfig.app.json"
         },
         {
-            "project": "src/tsconfig.spec.json",
-            "exclude": "**/node_modules/**"
+            "project": "src/tsconfig.spec.json"
         },
         {
-            "project": "e2e/tsconfig.e2e.json",
-            "exclude": "**/node_modules/**"
+            "project": "e2e/tsconfig.e2e.json"
         }
     ],
     "test": {

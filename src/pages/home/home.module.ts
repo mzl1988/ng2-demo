@@ -2,22 +2,25 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Http } from '@angular/http';
-import { profileRoutes } from './profile.routes';
-import { ProfileComponent } from './profile.component';
+import { homeRoutes } from './home.routes';
+import { HomeComponent } from './home.component';
+import { HomePersonalComponent } from './personal/personal.component';
+import { HomeAdminComponent } from './admin/admin.component';
 import { ExtendedHttpService } from '../../shared/services/extended-http.service';
 
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule,
-        RouterModule.forChild(profileRoutes)
+        RouterModule.forChild(homeRoutes)
     ],
     exports: [],
     declarations: [
-        ProfileComponent
+        HomeComponent,
+        HomePersonalComponent,
+        HomeAdminComponent
     ],
     providers: [
         { provide: Http, useClass: ExtendedHttpService }
     ],
 })
-export class ProfileModule { }
+export class HomeModule { }

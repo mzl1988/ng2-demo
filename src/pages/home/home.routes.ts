@@ -1,11 +1,11 @@
 import { RouterModule } from '@angular/router';
-import { ProfileComponent } from './profile.component';
+import { HomeComponent } from './home.component';
 import { AuthGuard } from '../auth-guard';
 
-export const profileRoutes = [
+export const homeRoutes = [
     {
         path: '',
         canActivate: [AuthGuard],
-        component: ProfileComponent
+        component: HomeComponent
     }
 ];
